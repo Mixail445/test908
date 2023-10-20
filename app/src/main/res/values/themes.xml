@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Test908" parent="Theme.MaterialComponents.Light.Bridge">
         <item name="windowNoTitle">true</item>
@@ -17,10 +17,14 @@
 
         <!-- Customize your theme here. -->
     </style>
+
     <style name="MaterialCalendarTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>
-        <item name="materialCalendarFullscreenTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen</item>
-        <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar</item>
+        <item name="materialCalendarFullscreenTheme">
+            @style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen
+        </item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar
+        </item>
         <!-- just override the colors used in the default style -->
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimary">#F7A072</item>
@@ -33,5 +37,6 @@
     </style>
 
     <style name="Theme.TestAndroiiiiiiid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.TestAndroiiiiiiid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

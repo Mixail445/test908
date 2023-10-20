@@ -1,7 +1,8 @@
 package com.example.test908.network
+
 import com.example.test908.BuildConfig
-import com.example.test908.data.repository.remoteData
-import com.example.test908.utils.constant
+import com.example.test908.data.repository.RemoteData
+import com.example.test908.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,29 +18,31 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) : serviceRetrofit =
-             Retrofit.Builder()
+    fun provideRetrofit(okHttpClient: OkHttpClient): ServiceRetrofit =
+        Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(provideBaseUrl())
             .client(okHttpClient)
             .build()
-                 .create(serviceRetrofit::class.java)
+            .create(ServiceRetrofit::class.java)
+
     @Provides
     @Singleton
-    fun provideBaseUrl() = constant.BASE_URL
-    @Singleton
-    @Provides
-    fun provideRemote(ser: serviceRetrofit): remoteData = remoteData(ser)
+    fun provideBaseUrl() = Constant.BASE_URL
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG){
+    fun provideRemote(ser: ServiceRetrofit): RemoteData = RemoteData(ser)
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
-    }else{
+    } else {
         OkHttpClient
             .Builder()
             .build()

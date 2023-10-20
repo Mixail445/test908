@@ -4,14 +4,14 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewItemDecoration:
+class RecyclerViewItemDecoration :
     RecyclerView.ItemDecoration() {
     private val decorationHeightWidth: Int = 10
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
         parent: RecyclerView,
-        state: RecyclerView.State
+        state: RecyclerView.State,
     ) {
         super.getItemOffsets(outRect, view, parent, state)
         val itemPosition = parent.getChildAdapterPosition(view)
