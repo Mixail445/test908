@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 android {
     compileSdkVersion 34
@@ -24,16 +25,20 @@ android {
         }
     }
     compileOptions {
+//        sourceCompatibility kotlin_version
+//        targetCompatibility JavaVersion.VERSION_11
+        targetCompatibility = kotlin_version
         sourceCompatibility kotlin_version
-        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+       // jvmTarget = '1.8'
+        jvmTarget = kotlin_version
     }
 }
 dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
